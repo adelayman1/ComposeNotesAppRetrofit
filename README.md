@@ -90,7 +90,6 @@
 *  [LazyVerticalStaggeredGrid](https://developer.android.com/reference/kotlin/androidx/compose/foundation/lazy/staggeredgrid/package-summary/)
 *  Single activity concept 
 *  Repository pattern
-*  [ViewBinding](https://developer.android.com/topic/libraries/view-binding) 
 
  ## Project Structure
 ```
