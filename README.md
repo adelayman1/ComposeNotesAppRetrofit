@@ -4,7 +4,7 @@
     <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
   </a>
   
- **Notes App** That's Built With Kotlin to keep and organize user's notes. This repository contains a Notes App This is an educational App.Use and run this App to learn more about Apps design and best practices you must follow.That's built with Kotlin language with compose, That's implements Coroutines,Retrofit for HTTP requests,ktor-client for WebSocket requests,clean architecture,hilt,StateFlow,Navigation component,ViewBinding,etc... this is client side you can find server side as api built with KTOR here -> [SocketNotesApi](https://github.com/adelayman1/SocketNoteApiKtor/) this project implement http and websocket you can find the same API but without websocket(Http requests only) here ->[HttpNotesApi](https://github.com/adelayman1/HttpNotesApiKtor/)
+ **Notes App** That's Built With Kotlin to keep and organize user's notes. This repository contains a Notes App This is an educational App.Use and run this App to learn more about Apps design and best practices you must follow.That's built with Kotlin language with compose, That's implements Coroutines,Retrofit for HTTP requests,ktor-client for WebSocket requests,clean architecture,hilt,StateFlow,Navigation component,etc... this is client side you can find server side as api built with KTOR here -> [SocketNotesApi](https://github.com/adelayman1/SocketNoteApiKtor/) this project implement http and websocket you can find the same API but without websocket(Http requests only) here ->[HttpNotesApi](https://github.com/adelayman1/HttpNotesApiKtor/)
 
  ![](https://user-images.githubusercontent.com/85571327/206874180-5b9fb911-c883-49f8-add2-82e8cfad6b37.png)
  
