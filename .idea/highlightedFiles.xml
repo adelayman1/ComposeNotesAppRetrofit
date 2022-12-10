@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectTreeColorHighlighter">
+    <files>
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/data" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/data/repositories" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/data/source" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/data/source/local" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/data/source/local/dataSource" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/data/source/remote/dataSource" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/data/source/remote/endPoints" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/data/source/remote/requestModels" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/data/source/remote/requestModels/AddNoteRequestModel.kt" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/data/source/remote/requestModels/LoginRequestModel.kt" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/data/source/remote/responseModels" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/models" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/repositories" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases" />
+      <node color="4" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases/AddEditNoteUseCase.kt" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases/GetAllNotesUseCase.kt" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases/GetNoteDetailsUseCase.kt" />
+      <node color="4" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases/IsUserSplashUseCase.kt" />
+      <node color="4" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases/LoginUseCase.kt" />
+      <node color="4" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases/RegisterUseCase.kt" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases/UploadImageUseCase.kt" />
+      <node color="4" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases/ValidateEmailUseCase.kt" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases/ValidateNoteDescriptionUseCase.kt" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases/ValidateNoteSubtitleUseCase.kt" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases/ValidateNoteTitleUseCase.kt" />
+      <node color="4" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases/ValidatePasswordUseCase.kt" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/usecases/ValidateWebLinkUseCase.kt" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/domain/utilitites" />
+      <node color="4" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/presentation/homeScreen/components" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/presentation/homeScreen/uiStates" />
+      <node color="4" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/presentation/noteDetailsScreen/components" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/presentation/noteDetailsScreen/NoteDetailScreen.kt" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/presentation/noteDetailsScreen/NoteDetailsViewModel.kt" />
+      <node color="1" path="$PROJECT_DIR$/app/src/main/java/com/example/noteappcompose/presentation/noteDetailsScreen/uiStates" />
+    </files>
+    <colors>
+      <color id="1" value="#4f060d" name="Color 1" enabled="true" />
+      <color id="2" value="#44220e" name="Color 2" enabled="true" />
+      <color id="3" value="#3f371b" name="Color 3" enabled="true" />
+      <color id="4" value="#162c16" name="Color 4" enabled="true" />
+      <color id="5" value="#0f2f47" name="Color 5" enabled="true" />
+      <color id="6" value="#171a34" name="Color 6" enabled="true" />
+      <color id="7" value="#311333" name="Color 7" enabled="true" />
+      <color id="8" value="#1e1e1e" name="Color 8" enabled="true" />
+      <color id="9" name="Color 9" />
+    </colors>
+    <option name="marksForCollapsedHighlights" value="Dots" />
+  </component>
+</project>
