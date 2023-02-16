@@ -1,5 +1,6 @@
 package com.example.noteappcompose.domain.usecases
 
+import com.example.noteappcompose.data.utilities.isFieldDataValid
 import com.example.noteappcompose.domain.models.UserModel
 import com.example.noteappcompose.domain.repositories.UserRepository
 import com.example.noteappcompose.domain.utilitites.InvalidInputTextException
@@ -14,13 +15,12 @@ class LoginUseCase @Inject constructor(
     public suspend operator fun invoke(email: String, password: String):UserModel {
         if (!userRepository.getUserToken().isNullOrBlank())
             throw UserLoggedInException()
-
         val validateEmailResult = validateEmailUseCase(email)
-        if (validateEmailResult.error != null)
+        if (!validateEmailResult.isFieldDataValid())
             throw InvalidInputTextException(validateEmailResult.error ?: "")
         val validatePasswordResult = validatePasswordUseCase(password)
-        if (validatePasswordResult.error != null)
-            throw InvalidInputTextException(validatePasswordResult.error!!)
+        if (!validatePasswordResult.isFieldDataValid())
+            throw InvalidInputTextException(validatePasswordResult.error ?: "")
         return userRepository.login(email, password)
     }
 }

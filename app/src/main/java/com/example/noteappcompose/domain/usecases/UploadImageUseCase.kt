@@ -11,12 +11,19 @@ class UploadImageUseCase @Inject constructor(
     @ApplicationContext var context: Context
 ) {
     public suspend operator fun invoke(imageUri: Uri): String {
-        var imageAsByte =
-            context.contentResolver.openInputStream(imageUri)?.buffered()?.use { it.readBytes() }
+        val imageAsByte = convertImageFromUriToByte(imageUri)
+        val extension = getImageExtensionByUri(imageUri)
+        val uploadImageResult = noteRepository.uploadImage(imageAsByte!!, extension)
+        return uploadImageResult;
+    }
 
-        val imageType = context.contentResolver.getType(imageUri)
-        val extension = imageType!!.substring(imageType.indexOf("/") + 1)
-        var x =  noteRepository.uploadImage(imageAsByte!!,extension)
-        return x;
+    private fun convertImageFromUriToByte(imageUri: Uri) =
+        context.contentResolver.openInputStream(imageUri)?.buffered()?.use { it.readBytes() }
+
+    private fun getImageTypeByUri(imageUri: Uri) = context.contentResolver.getType(imageUri)
+    private fun getImageExtensionByUri(imageUri: Uri):String {
+        val imageType = getImageTypeByUri(imageUri)
+        val imageExtension = imageType!!.substring(imageType.indexOf("/") + 1)
+        return imageExtension
     }
 }

@@ -1,13 +1,10 @@
 package com.example.noteappcompose.domain.usecases
 
 import com.example.noteappcompose.data.source.remote.requestModels.AddNoteRequestModel
+import com.example.noteappcompose.data.utilities.Constants.CREATE_NEW_NOTE_STATE_ID
+import com.example.noteappcompose.data.utilities.isFieldDataValid
 import com.example.noteappcompose.domain.repositories.NoteRepository
 import com.example.noteappcompose.domain.utilitites.InvalidInputTextException
-import com.example.noteappcompose.domain.utilitites.InvalidNoteSubtitleException
-import com.example.noteappcompose.domain.utilitites.InvalidNoteTextException
-import com.example.noteappcompose.domain.utilitites.InvalidNoteTitleException
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.Serializer
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
@@ -29,28 +26,28 @@ class AddEditNoteUseCase @Inject constructor(
         color: Int,
     ) {
         val validateNoteTitleResult = validateNoteTitleUseCase(title)
-        if (validateNoteTitleResult.error !=null) {
-            throw InvalidInputTextException(errorMsg = validateNoteTitleResult.error?:"")
+        if (validateNoteTitleResult.isFieldDataValid()) {
+            throw InvalidInputTextException(errorMsg = validateNoteTitleResult.error ?: "")
         }
         val validateNoteSubtitleResult = validateNoteSubtitleUseCase(subtitle)
-        if (validateNoteTitleResult.error !=null) {
-            throw InvalidInputTextException(errorMsg = validateNoteSubtitleResult.error?:"")
+        if (validateNoteTitleResult.isFieldDataValid()) {
+            throw InvalidInputTextException(errorMsg = validateNoteSubtitleResult.error ?: "")
         }
         val validateNoteDescriptionResult = validateNoteDescriptionUseCase(description)
-        if (validateNoteTitleResult.error !=null) {
-            throw InvalidInputTextException(errorMsg = validateNoteDescriptionResult.error?:"")
+        if (validateNoteTitleResult.isFieldDataValid()) {
+            throw InvalidInputTextException(errorMsg = validateNoteDescriptionResult.error ?: "")
         }
-        if(webLink.isNullOrEmpty()){
-            val validateNoteWebLinkResult = validateWebLinkUseCase(webLink?:"")
-            if (validateNoteTitleResult.error !=null) {
-                throw InvalidInputTextException(errorMsg = validateNoteWebLinkResult.error?:"")
+        if (webLink!=null) {
+            val validateNoteWebLinkResult = validateWebLinkUseCase(webLink)
+            if (validateNoteTitleResult.isFieldDataValid()) {
+                throw InvalidInputTextException(errorMsg = validateNoteWebLinkResult.error ?: "")
             }
         }
 
         noteRepository.insertNote(
             Json.encodeToString(
                 AddNoteRequestModel(
-                    id = if (id == "-1") null else id?.toInt(),
+                    id = if (id == CREATE_NEW_NOTE_STATE_ID) null else id?.toInt(),
                     title = title,
                     subtitle = subtitle,
                     description = description,

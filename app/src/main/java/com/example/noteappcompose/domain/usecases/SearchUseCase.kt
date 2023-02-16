@@ -16,10 +16,8 @@ class SearchUseCase @Inject constructor(
     public suspend operator fun invoke(searchWord: String): List<NoteModel> {
         if (userRepository.getUserToken().isNullOrBlank())
             throw UserNotLoggedInException()
-
          if (searchWord.isBlank())
             throw InvalidInputTextException("Invalid search word")
-
          return noteRepository.searchNotes(searchWord)
     }
 }
