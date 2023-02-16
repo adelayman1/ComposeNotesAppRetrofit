@@ -20,7 +20,7 @@ import com.example.noteappcompose.presentation.registerScreen.RegisterScreen
 import com.example.noteappcompose.presentation.splashScreen.SplashScreen
 import com.example.noteappcompose.presentation.theme.LightGray
 import com.example.noteappcompose.presentation.theme.NoteAppComposeTheme
-import com.example.noteappcompose.presentation.utility.Screen
+import com.example.noteappcompose.presentation.utilities.Screen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

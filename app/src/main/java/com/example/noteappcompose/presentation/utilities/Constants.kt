@@ -1,4 +1,4 @@
-package com.example.noteappcompose.presentation.utility
+package com.example.noteappcompose.presentation.utilities
 
 import androidx.compose.ui.graphics.Color
 import com.example.noteappcompose.presentation.theme.Blue

@@ -1,7 +1,7 @@
 package com.example.noteappcompose.presentation.homeScreen.uiStates
 
 import androidx.compose.ui.graphics.toArgb
-import com.example.noteappcompose.presentation.utility.Constants
+import com.example.noteappcompose.presentation.utilities.Constants
 
 data class NoteItemUiState(
     var id:String = "-1",

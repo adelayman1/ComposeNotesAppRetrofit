@@ -2,7 +2,7 @@ package com.example.noteappcompose.presentation.noteDetailsScreen.uiStates
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
-import com.example.noteappcompose.presentation.utility.Constants
+import com.example.noteappcompose.presentation.utilities.Constants
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

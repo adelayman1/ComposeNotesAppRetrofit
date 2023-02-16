@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.noteappcompose.data.utilities.Constants.CREATE_NEW_NOTE_STATE_ID
 import com.example.noteappcompose.domain.usecases.AddEditNoteUseCase
 import com.example.noteappcompose.domain.usecases.GetNoteDetailsUseCase
 import com.example.noteappcompose.domain.usecases.UploadImageUseCase
@@ -44,7 +45,7 @@ class NoteDetailsViewModel @Inject constructor(
 
     init {
         savedStateHandle.get<String>("noteId")?.let { noteId ->
-            if (noteId != "-1") {
+            if (noteId != CREATE_NEW_NOTE_STATE_ID) {
                 viewModelScope.launch {
                     try {
                         noteDetailsUiState = noteDetailsUiState.copy(isLoading = true)

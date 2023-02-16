@@ -10,15 +10,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DriveFileRenameOutline
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.rememberScaffoldState
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,9 +31,8 @@ import com.example.noteappcompose.presentation.registerScreen.components.Loading
 import com.example.noteappcompose.presentation.registerScreen.uiStates.RegisterUiEvent
 import com.example.noteappcompose.presentation.theme.HintGray
 import com.example.noteappcompose.presentation.theme.LightGray
-import com.example.noteappcompose.presentation.theme.Orange
 import com.example.noteappcompose.presentation.theme.UbuntuFont
-import com.example.noteappcompose.presentation.utility.Screen
+import com.example.noteappcompose.presentation.utilities.Screen
 import ir.kaaveh.sdpcompose.sdp
 import ir.kaaveh.sdpcompose.ssp
 import kotlinx.coroutines.flow.collectLatest

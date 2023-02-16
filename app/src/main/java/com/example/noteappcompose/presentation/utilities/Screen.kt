@@ -1,4 +1,4 @@
-package com.example.noteappcompose.presentation.utility
+package com.example.noteappcompose.presentation.utilities
 
 sealed class Screen(val route: String) {
     object LoginScreen: Screen("login_screen")
