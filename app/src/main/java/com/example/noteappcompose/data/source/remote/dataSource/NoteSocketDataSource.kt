@@ -1,7 +1,9 @@
 package com.example.noteappcompose.data.source.remote.dataSource
 
 import com.example.noteappcompose.data.source.remote.responseModels.NoteResponseModel
+import com.example.noteappcompose.data.utilities.Constants.BASE_SOCKET_URL
 import com.example.noteappcompose.domain.models.NoteModel
+import com.example.noteappcompose.domain.utilitites.CannotJoinSessionException
 import io.ktor.client.HttpClient
 import io.ktor.client.features.websocket.webSocketSession
 import io.ktor.client.request.url
@@ -25,9 +27,8 @@ class NoteSocketDataSource @Inject constructor(var client: HttpClient) {
     private var socketSession: WebSocketSession? = null
     suspend fun joinSession(userToken: String) {
         try {
-            socketSession =
-                client.webSocketSession { url("ws://192.168.1.6:4040/notes-socket?userToken=${userToken}") }
-            if (socketSession?.isActive == false) throw Exception("can't connect tot socket")
+            socketSession = client.webSocketSession { url("$BASE_SOCKET_URL/notes-socket?userToken=${userToken}") }
+            if (socketSession?.isActive == false) throw CannotJoinSessionException()
         } catch (e: Exception) {
             throw e
         }
@@ -47,13 +48,13 @@ class NoteSocketDataSource @Inject constructor(var client: HttpClient) {
                 ?.receiveAsFlow()
                 ?.filter { it is Frame.Text }
                 ?.map {
-                    Json.decodeFromString<NoteResponseModel>((it as? Frame.Text)?.readText() ?: "")
-                        .toNoteModel()
+                    fromTextFrameToNoteModel(it)
                 } ?: flow { }
         } catch (e: Exception) {
             throw e
         }
     }
+    private fun fromTextFrameToNoteModel(frame:Frame)= Json.decodeFromString<NoteResponseModel>((frame as? Frame.Text)?.readText() ?: "").toNoteModel()
 
     suspend fun destroySession() {
         socketSession?.close()

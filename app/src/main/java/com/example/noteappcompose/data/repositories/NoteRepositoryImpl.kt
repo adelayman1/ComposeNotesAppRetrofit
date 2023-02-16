@@ -2,6 +2,8 @@ package com.example.noteappcompose.data.repositories
 
 import com.example.noteappcompose.data.source.remote.dataSource.NoteSocketDataSource
 import com.example.noteappcompose.data.source.remote.dataSource.NotesRemoteDataSource
+import com.example.noteappcompose.data.utilities.getErrorMessageFromResponse
+import com.example.noteappcompose.data.utilities.isDataHasGotSuccessfully
 import com.example.noteappcompose.domain.models.NoteModel
 import com.example.noteappcompose.domain.repositories.NoteRepository
 import kotlinx.coroutines.CoroutineDispatcher
@@ -23,33 +25,29 @@ class NoteRepositoryImpl @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher
 ) : NoteRepository {
     override suspend fun getNotes(): List<NoteModel> {
-        var getNotesResult = notesRemoteDataSource.getAllNotes()
-        return if (getNotesResult.isSuccessful && getNotesResult.body()?.data != null && getNotesResult.code() == 200) {
+        val getNotesResult = notesRemoteDataSource.getAllNotes()
+        return if (getNotesResult.isDataHasGotSuccessfully()) {
             getNotesResult.body()?.data!!.map { it.toNoteModel() }
-//            getNotesResult.data!!.associateBy({ it.noteId }, { it.toNoteModel() })
         } else {
-            val errorBody = JSONObject(getNotesResult.errorBody()!!.string())
-            throw Exception(errorBody.getString("message"))
+            throw Exception(getNotesResult.getErrorMessageFromResponse())
         }
     }
 
-    override suspend fun getNote(noteId: String): NoteModel {
-        var getNoteDetailsResult = notesRemoteDataSource.getNoteDetails(noteId)
-        return if (getNoteDetailsResult.isSuccessful && getNoteDetailsResult.body()?.data != null && getNoteDetailsResult.code() == 200) {
+    override suspend fun getNoteDetails(noteId: String): NoteModel {
+        val getNoteDetailsResult = notesRemoteDataSource.getNoteDetails(noteId)
+        return if (getNoteDetailsResult.isDataHasGotSuccessfully()) {
             getNoteDetailsResult.body()!!.data!!.toNoteModel()
-        } else{
-            val errorBody = JSONObject(getNoteDetailsResult.errorBody()!!.string())
-            throw Exception(errorBody.getString("message"))
+        } else {
+            throw Exception(getNoteDetailsResult.getErrorMessageFromResponse())
         }
     }
 
     override suspend fun searchNotes(searchWord: String): List<NoteModel> {
-        var getSearchResult = notesRemoteDataSource.searchNotes(searchWord = searchWord)
-        return if (getSearchResult.isSuccessful && getSearchResult.body()?.data != null && getSearchResult.code() == 200) {
+        val getSearchResult = notesRemoteDataSource.searchNotes(searchWord = searchWord)
+        return if (getSearchResult.isDataHasGotSuccessfully()) {
             getSearchResult.body()!!.data!!.map { it.toNoteModel() }
-        } else{
-            val errorBody = JSONObject(getSearchResult.errorBody()!!.string())
-            throw Exception(errorBody.getString("message"))
+        } else {
+            throw Exception(getSearchResult.getErrorMessageFromResponse())
         }
     }
 
@@ -59,26 +57,22 @@ class NoteRepositoryImpl @Inject constructor(
 
     override suspend fun insertNote(note: String) {
         return externalScope.launch {
-            noteSocketDataSource.sendNote(
-                note
-            )
+            noteSocketDataSource.sendNote(note)
         }.join()
     }
 
     override suspend fun uploadImage(imageAsByte: ByteArray, extension: String): String {
-        var uploadImageResult = notesRemoteDataSource.updateImage(
+        val uploadImageResult = notesRemoteDataSource.updateImage(
             MultipartBody.Part.createFormData(
                 "image",
                 "image.$extension",
                 imageAsByte.toRequestBody("*/*".toMediaType())
             )
         )
-        return if (uploadImageResult.isSuccessful && uploadImageResult.body()?.data != null && uploadImageResult.code() == 200) {
+        return if (uploadImageResult.isDataHasGotSuccessfully()) {
             uploadImageResult.body()!!.data!!
         } else {
-            val errorBody = JSONObject(uploadImageResult.errorBody()!!.string())
-            throw Exception(errorBody.getString("message"))
-
+            throw Exception(uploadImageResult.getErrorMessageFromResponse())
         }
     }
 }

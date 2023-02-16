@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.noteappcompose.data.source.remote.endPoints.NotesApiService
 import com.example.noteappcompose.data.source.remote.endPoints.UserApiService
+import com.example.noteappcompose.data.utilities.Constants.USER_SHARED_PREFERENCES_KEY
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,71 +34,7 @@ import javax.inject.Singleton
 class DatabaseModule {
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl("http://192.168.1.6:4040/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideUserApiService(retrofit: Retrofit): UserApiService {
-        return retrofit.create(UserApiService::class.java)
-    }
-
-    @Singleton
-    @Provides
-    fun provideNotesApiService(retrofit: Retrofit): NotesApiService {
-        return retrofit.create(NotesApiService::class.java)
-    }
-
-    @Singleton
-    @Provides
     fun provideSharedPreference(@ApplicationContext context: Context): SharedPreferences {
-        return context.getSharedPreferences("user", Context.MODE_PRIVATE)
-    }
-
-    @Provides
-    @Singleton
-    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-    }
-
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(
-        interceptor: HttpLoggingInterceptor,
-        prefs: SharedPreferences
-    ): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addNetworkInterceptor { chain ->
-                var request = chain.request()
-                if (request.header("No-Authentication") == null) {
-                    var token: String = prefs.getString("UserToken", null) ?: ""
-                    request = request.newBuilder()
-                        .addHeader("Authorization", prefs.getString("UserToken", null) ?: "guest")
-                        .build();
-                }
-                chain.proceed(request)
-            }
-            .addInterceptor(interceptor)
-            .connectTimeout(120, TimeUnit.SECONDS)
-            .readTimeout(120, TimeUnit.SECONDS)
-            .writeTimeout(120, TimeUnit.SECONDS)
-            .build();
-    }
-
-    @Provides
-    @Singleton
-    fun provideHttpClient(): HttpClient {
-        return HttpClient(CIO) {
-            install(Logging)
-            install(WebSockets)
-            install(JsonFeature) {
-                serializer = KotlinxSerializer()
-            }
-        }
+        return context.getSharedPreferences(USER_SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
     }
 }

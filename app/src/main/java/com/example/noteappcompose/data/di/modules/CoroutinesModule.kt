@@ -18,7 +18,6 @@ class CoroutinesModule {
     fun provideCoroutineScope(): CoroutineScope {
         return CoroutineScope(SupervisorJob() + Dispatchers.IO)
     }
-
     @Singleton
     @Provides
     fun providesCoroutineDispatcher(): CoroutineDispatcher {
