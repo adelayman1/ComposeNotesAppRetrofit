@@ -3,7 +3,6 @@ package com.example.noteappcompose.data.di.modules
 import android.content.SharedPreferences
 import com.example.noteappcompose.data.source.remote.endPoints.NotesApiService
 import com.example.noteappcompose.data.source.remote.endPoints.UserApiService
-import com.example.noteappcompose.data.utilities.Constants
 import com.example.noteappcompose.data.utilities.Constants.BASE_HTTP_URL
 import com.example.noteappcompose.data.utilities.Constants.USER_TOKEN_SHARED_PREFERENCES_KEY
 import dagger.Module

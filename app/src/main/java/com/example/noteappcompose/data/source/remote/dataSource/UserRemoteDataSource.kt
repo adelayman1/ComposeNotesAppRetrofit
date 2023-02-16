@@ -5,10 +5,6 @@ import com.example.noteappcompose.data.source.remote.requestModels.LoginRequestM
 import com.example.noteappcompose.data.source.remote.requestModels.RegisterRequestModel
 import com.example.noteappcompose.data.source.remote.responseModels.BaseApiResponse
 import com.example.noteappcompose.data.source.remote.responseModels.UserResponseModel
-import io.ktor.client.HttpClient
-import io.ktor.client.request.header
-import io.ktor.client.request.post
-import io.ktor.client.request.url
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response

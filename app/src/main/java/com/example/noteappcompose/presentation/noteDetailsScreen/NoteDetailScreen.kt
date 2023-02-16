@@ -29,6 +29,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.BottomSheetScaffold
 import androidx.compose.material.BottomSheetState
 import androidx.compose.material.BottomSheetValue
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
@@ -38,7 +39,6 @@ import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Image
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.rememberBottomSheetScaffoldState
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text

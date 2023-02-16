@@ -22,7 +22,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.window.Dialog
-import com.example.noteappcompose.presentation.noteDetailsScreen.components.NoteInputField
 import com.example.noteappcompose.presentation.theme.Orange
 import com.example.noteappcompose.presentation.theme.SearchGray
 import com.example.noteappcompose.presentation.theme.UbuntuFont

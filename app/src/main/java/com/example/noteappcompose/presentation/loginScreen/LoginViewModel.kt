@@ -9,8 +9,8 @@ import com.example.noteappcompose.domain.usecases.LoginUseCase
 import com.example.noteappcompose.domain.usecases.ValidateEmailUseCase
 import com.example.noteappcompose.domain.usecases.ValidatePasswordUseCase
 import com.example.noteappcompose.domain.utilitites.InvalidInputTextException
-import com.example.noteappcompose.presentation.loginScreen.uiStates.LoginUiState
 import com.example.noteappcompose.presentation.loginScreen.uiStates.LoginUiEvent
+import com.example.noteappcompose.presentation.loginScreen.uiStates.LoginUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow

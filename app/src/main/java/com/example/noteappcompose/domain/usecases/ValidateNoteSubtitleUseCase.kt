@@ -1,6 +1,5 @@
 package com.example.noteappcompose.domain.usecases
 
-import com.example.noteappcompose.data.utilities.Constants
 import com.example.noteappcompose.data.utilities.Constants.MINIMUM_SUBTITLE_LENGTH
 import com.example.noteappcompose.domain.models.ValidateResult
 import javax.inject.Inject

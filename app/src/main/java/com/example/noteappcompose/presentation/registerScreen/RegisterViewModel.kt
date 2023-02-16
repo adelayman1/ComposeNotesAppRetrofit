@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.noteappcompose.domain.usecases.RegisterUseCase
 import com.example.noteappcompose.domain.usecases.ValidateEmailUseCase
-import com.example.noteappcompose.domain.usecases.ValidateUserNameUseCase
 import com.example.noteappcompose.domain.usecases.ValidatePasswordUseCase
+import com.example.noteappcompose.domain.usecases.ValidateUserNameUseCase
 import com.example.noteappcompose.domain.utilitites.InvalidInputTextException
 import com.example.noteappcompose.presentation.registerScreen.uiStates.RegisterUiEvent
 import com.example.noteappcompose.presentation.registerScreen.uiStates.RegisterUiState

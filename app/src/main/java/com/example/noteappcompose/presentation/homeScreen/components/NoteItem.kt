@@ -1,6 +1,5 @@
 package com.example.noteappcompose.presentation.homeScreen.components
 
-import android.net.Uri
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight

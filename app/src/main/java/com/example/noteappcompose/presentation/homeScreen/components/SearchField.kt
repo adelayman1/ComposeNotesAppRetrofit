@@ -15,7 +15,6 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import com.example.noteappcompose.presentation.theme.HintGray
 import com.example.noteappcompose.presentation.theme.SearchGray

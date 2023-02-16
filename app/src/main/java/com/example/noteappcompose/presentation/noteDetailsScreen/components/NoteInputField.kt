@@ -1,6 +1,5 @@
 package com.example.noteappcompose.presentation.noteDetailsScreen.components
 
-import android.graphics.fonts.FontFamily
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,12 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.TextUnit
-import com.example.noteappcompose.presentation.theme.BottomBarIcon
 import com.example.noteappcompose.presentation.theme.HintGray
 import com.example.noteappcompose.presentation.theme.Orange
 import com.example.noteappcompose.presentation.theme.Red
-import com.example.noteappcompose.presentation.theme.SearchGray
 import com.example.noteappcompose.presentation.theme.UbuntuFont
 import ir.kaaveh.sdpcompose.sdp
 import ir.kaaveh.sdpcompose.ssp
