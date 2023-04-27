@@ -8,7 +8,7 @@ class ValidateUserNameUseCase @Inject constructor() {
     operator fun invoke(name: String): ValidateResult {
         if (name.isBlank())
             return ValidateResult(error = "Please enter name")
-        if (name.length<MINIMUM_USER_NAME_LENGTH)
+        if (name.length < MINIMUM_USER_NAME_LENGTH)
             return ValidateResult(error = "Please enter valid name")
         return ValidateResult()
     }

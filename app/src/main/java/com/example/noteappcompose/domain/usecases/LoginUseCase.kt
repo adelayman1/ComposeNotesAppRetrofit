@@ -12,15 +12,29 @@ class LoginUseCase @Inject constructor(
     private val validateEmailUseCase: ValidateEmailUseCase,
     private val validatePasswordUseCase: ValidatePasswordUseCase
 ) {
-    public suspend operator fun invoke(email: String, password: String):UserModel {
+    public suspend operator fun invoke(email: String, password: String): UserModel {
         if (!userRepository.getUserToken().isNullOrBlank())
             throw UserLoggedInException()
-        val validateEmailResult = validateEmailUseCase(email)
-        if (!validateEmailResult.isFieldDataValid())
-            throw InvalidInputTextException(validateEmailResult.error ?: "")
-        val validatePasswordResult = validatePasswordUseCase(password)
-        if (!validatePasswordResult.isFieldDataValid())
-            throw InvalidInputTextException(validatePasswordResult.error ?: "")
+        validateFields(email, password)
         return userRepository.login(email, password)
+    }
+
+    private fun validateFields(email: String, password: String) {
+        validateEmail(email)
+        validatePassword(password)
+    }
+
+    private fun validateEmail(email: String) {
+        val validateEmailResult = validateEmailUseCase(email)
+        if (!validateEmailResult.isFieldDataValid()) throw InvalidInputTextException(
+            validateEmailResult.error ?: ""
+        )
+    }
+
+    private fun validatePassword(password: String) {
+        val validatePasswordResult = validatePasswordUseCase(password)
+        if (!validatePasswordResult.isFieldDataValid()) throw InvalidInputTextException(
+            validatePasswordResult.error ?: ""
+        )
     }
 }

@@ -1,8 +1,8 @@
 package com.example.noteappcompose.data.utilities
 
 object Constants {
-    const val BASE_HTTP_URL = "http://192.168.1.6:4040/"
-    const val BASE_SOCKET_URL = "ws://192.168.1.6:4040"
+    const val BASE_HTTP_URL = "http://192.168.1.13:4040/"
+    const val BASE_SOCKET_URL = "ws://192.168.1.13:4040"
     const val USER_TOKEN_SHARED_PREFERENCES_KEY:String = "UserToken"
     const val USER_SHARED_PREFERENCES_KEY:String = "user"
     const val MINIMUM_USER_NAME_LENGTH:Int = 3

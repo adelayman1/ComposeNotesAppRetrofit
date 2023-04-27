@@ -7,8 +7,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class UploadImageUseCase @Inject constructor(
-    var noteRepository: NoteRepository,
-    @ApplicationContext var context: Context
+    private val noteRepository: NoteRepository,
+    @ApplicationContext private val context: Context
 ) {
     public suspend operator fun invoke(imageUri: Uri): String {
         val imageAsByte = convertImageFromUriToByte(imageUri)
@@ -21,7 +21,7 @@ class UploadImageUseCase @Inject constructor(
         context.contentResolver.openInputStream(imageUri)?.buffered()?.use { it.readBytes() }
 
     private fun getImageTypeByUri(imageUri: Uri) = context.contentResolver.getType(imageUri)
-    private fun getImageExtensionByUri(imageUri: Uri):String {
+    private fun getImageExtensionByUri(imageUri: Uri): String {
         val imageType = getImageTypeByUri(imageUri)
         val imageExtension = imageType!!.substring(imageType.indexOf("/") + 1)
         return imageExtension

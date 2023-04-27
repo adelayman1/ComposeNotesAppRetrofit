@@ -22,12 +22,8 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val getAllNotesUseCase: GetAllNotesUseCase,
     private val searchUseCase: SearchUseCase,
-    private val socketDataSource: NoteSocketDataSource
 ) : ViewModel() {
     var notesUiState by mutableStateOf(NotesUiState(isLoading = true))
-
-    //    private val _searchText = MutableStateFlow("")
-//    val searchText: StateFlow<String> = _searchText
 
     private var _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow: SharedFlow<UiEvent> = _eventFlow.asSharedFlow()
@@ -38,11 +34,6 @@ class HomeViewModel @Inject constructor(
                 notesUiState = notesUiState.copy(
                     isLoading = true
                 )
-                //TODO
-//                _searchText.debounce(1000).filterNot {it.isEmpty()}.collect {
-//                    Log.d("SEARCHSEARCHSEARCCH", ":${it} ")
-//                }
-                socketDataSource.joinSession("259dd0ab-5b37-4f0d-a6b3-32f614d5ea01")
                 getAllNotesUseCase.invoke().collect {
                     val newNotesList = it.map { note ->
                         NoteItemUiState(

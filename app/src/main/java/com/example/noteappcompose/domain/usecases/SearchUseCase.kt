@@ -14,8 +14,14 @@ class SearchUseCase @Inject constructor(
     public suspend operator fun invoke(searchWord: String): List<NoteModel> {
         if (userRepository.getUserToken().isNullOrBlank())
             throw UserNotLoggedInException()
-         if (searchWord.isBlank())
+        validateSearchWord(searchWord)
+        return noteRepository.searchNotes(searchWord)
+    }
+
+    private fun validateSearchWord(searchWord: String) {
+        if (searchWord.isBlank())
             throw InvalidInputTextException("Invalid search word")
-         return noteRepository.searchNotes(searchWord)
+        if (searchWord.length < 2)
+            throw InvalidInputTextException("Search keyword is very short")
     }
 }
